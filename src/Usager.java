@@ -10,8 +10,8 @@ public class Usager {
 	// destination: la destination de l’usager ( etage ) 
 	private int destination;
 	
-	// entrer : l'utilisateur est entrer dans l'ascenseur 
-	private boolean enter;
+	// entrer : l'utilisateur est entré dans l'ascenseur 
+	private boolean entre;
 		
 		
 	// Constructeur :
@@ -53,29 +53,37 @@ public class Usager {
 		this.destination = destination;
 	}
 
-	public boolean isEnter() {
-		return enter;
+	public boolean isEntre() {
+		return entre;
 	}
 
-	public void setEnter(boolean enter) {
-		this.enter = enter;
+	public void setEntre(boolean entre) {
+		this.entre = entre;
 	}
 	
 	
 
 		// **** Methodes ****  
 	
-	// Methode pour appler l'ascenseur
-	public void appelAscenseur(int etage, String direction )
-	{
-		this.etage = etage;
-		this.direction = direction;
-	}
 	
 	// Methode pour signler la destination 
 	public void signalerDestination(int destination)
 	{
 		this.destination = destination;
+	}
+	
+	// Methode pour entrer dans l'ascenseur
+	public void entrer(Porte porte) {
+		if(porte.isporteOuverte()) {
+			this.setEntre(false);
+		}
+	}
+	
+	// Methode pour sortir de l'ascenseur
+	public void sortir(Porte porte) {
+		if(porte.isporteOuverte()) {
+			this.setEntre(false);
+		}
 	}
 	
 	

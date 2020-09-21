@@ -22,32 +22,28 @@ public class Porte {
 	
 		// Getters and Setters :
 	
-	public int getEtage() {
+	public int getetage() {
 		return etage;
 	}
 
-	public void setEtage(int etage) {
+	public void setetage(int etage) {
 		this.etage = etage;
 	}
 
 	
-	public boolean isPorteOuverte() {
+	public boolean isporteOuverte() {
 		return porteOuverte;
 	}
 	
-	public void setPorteOuverte(boolean porteOuverte) {
+	public void setporteOuverte(boolean porteOuverte) {
 		this.porteOuverte = porteOuverte;
 	}
 
 	
 		// **** Methodes ****  
 	
-	// Methode qui ouvre la porte : 
-	public void ouvrirEtFermerPorte()
-	{
-		// Ouvrir la porte
-		this.setPorteOuverte(true);
-		System.out.println("Porte ouverte : "+ this.isPorteOuverte());
+	// Methode qui fait attendre a la porte un laps de 3 secondes
+	public void attendre() {
 		
 		// Attendre un certain laps de temps [3 sec.]
 		try 
@@ -57,44 +53,31 @@ public class Porte {
 		catch (InterruptedException e) 
 		{
 			e.printStackTrace();
-			System.out.println("Erreur, la porte n'attends pas 3 secondes");			
 		}
-		
-		// Fermer la porte
-		this.setPorteOuverte(true);
-		System.out.println("Porte fermée : " + this.isPorteOuverte());
-		
 	}
 	
-	/* Methodes en cas ou ...
-	   
-	// Methode qui ferme la porte : 
-	public void fermerPorte()
-	{
-		System.out.println("Porte fermée");
-		setPorteOuverte(false);
-	}
+	// Methode qui ouvre la porte : 
+	public void ouvrir() {
 		
-	// Methode attendre un certain laps de temps [3 sec.]
-	public void attendre ()
-	{
-		try 
+		if(!this.isporteOuverte())
 		{
-			TimeUnit.SECONDS.sleep(3);
-		} 
-		catch (InterruptedException e) 
-		{
-			e.printStackTrace();
-			System.out.println("Erreur, la porte n'attends pas 3 secondes");			
+			// Ouvrir la porte
+			this.setporteOuverte(true);
 		}
 	}
-	*/
+	
+	public void fermer() {
+		if(this.isporteOuverte()) {
+			//fermer la porte
+			this.setporteOuverte(false);
+		}
+	}
 	
 	
 	// Methode qui signale a l'ascenseur la possibilite de demarrer
-	public void demarrerAscenseur (Ascenseur asc, boolean permission)
+	public void signalerDepart (Ascenseur asc)
 	{
-		asc.setDemarrer(permission);
+		asc.setDemarrer(true);
 	}
 	
 	
