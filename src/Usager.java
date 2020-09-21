@@ -10,12 +10,21 @@ public class Usager {
 	// destination: la destination de l’usager ( etage ) 
 	private int destination;
 	
+	// entrer : l'utilisateur est entrer dans l'ascenseur 
+	private boolean enter;
+		
+		
 	// Constructeur :
 	public Usager(int etage, String direction, int destination)
 	{
 		this.etage = etage;
 		this.direction = direction;
 		this.destination = destination;
+	}
+	
+	public Usager()
+	{
+		
 	}
 	
 	// Getters and Setters : 
@@ -44,6 +53,32 @@ public class Usager {
 		this.destination = destination;
 	}
 
-	// **** Methodes ****  
+	public boolean isEnter() {
+		return enter;
+	}
+
+	public void setEnter(boolean enter) {
+		this.enter = enter;
+	}
+	
+	
+
+		// **** Methodes ****  
+	
+	// Methode pour appler l'ascenseur
+	public void appelAscenseur(int etage, String direction )
+	{
+		this.etage = etage;
+		this.direction = direction;
+	}
+	
+	// Methode pour signler la destination 
+	public void signalerDestination(int destination)
+	{
+		this.destination = destination;
+	}
+	
+	
+	
 
 }

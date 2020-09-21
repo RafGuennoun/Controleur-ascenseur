@@ -10,10 +10,15 @@ public class Porte {
 	
 
 		// Constructeur :
-	public Porte(int etage) {
+	public Porte(int etage) 
+	{
 		this.etage = etage;
 	}
 	
+	public Porte() 
+	{
+		
+	}
 	
 		// Getters and Setters :
 	
@@ -25,14 +30,11 @@ public class Porte {
 		this.etage = etage;
 	}
 
-
 	
 	public boolean isPorteOuverte() {
 		return porteOuverte;
 	}
 	
-
-
 	public void setPorteOuverte(boolean porteOuverte) {
 		this.porteOuverte = porteOuverte;
 	}
@@ -41,18 +43,37 @@ public class Porte {
 		// **** Methodes ****  
 	
 	// Methode qui ouvre la porte : 
-	public void ouvrirPorte()
+	public void ouvrirEtFermerPorte()
 	{
-		System.out.println("Porte ouverte");
-		setPorteOuverte(true);
+		// Ouvrir la porte
+		this.setPorteOuverte(true);
+		System.out.println("Porte ouverte : "+ this.isPorteOuverte());
+		
+		// Attendre un certain laps de temps [3 sec.]
+		try 
+		{
+			TimeUnit.SECONDS.sleep(3);
+		} 
+		catch (InterruptedException e) 
+		{
+			e.printStackTrace();
+			System.out.println("Erreur, la porte n'attends pas 3 secondes");			
+		}
+		
+		// Fermer la porte
+		this.setPorteOuverte(true);
+		System.out.println("Porte fermée : " + this.isPorteOuverte());
+		
 	}
 	
+	/* Methodes en cas ou ...
+	   
 	// Methode qui ferme la porte : 
-		public void fermerPorte()
-		{
-			System.out.println("Porte fermée");
-			setPorteOuverte(false);
-		}
+	public void fermerPorte()
+	{
+		System.out.println("Porte fermée");
+		setPorteOuverte(false);
+	}
 		
 	// Methode attendre un certain laps de temps [3 sec.]
 	public void attendre ()
@@ -67,12 +88,15 @@ public class Porte {
 			System.out.println("Erreur, la porte n'attends pas 3 secondes");			
 		}
 	}
+	*/
+	
 	
 	// Methode qui signale a l'ascenseur la possibilite de demarrer
 	public void demarrerAscenseur (Ascenseur asc, boolean permission)
 	{
 		asc.setDemarrer(permission);
 	}
+	
 	
 	
 	
