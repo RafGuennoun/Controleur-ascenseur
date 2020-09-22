@@ -1,3 +1,4 @@
+package main;
 
 public class Usager {
 	
@@ -11,7 +12,7 @@ public class Usager {
 	private int destination;
 	
 	// entrer : l'utilisateur est entré dans l'ascenseur 
-	private boolean entre;
+	private boolean entre = false;
 		
 		
 	// Constructeur :
@@ -20,6 +21,10 @@ public class Usager {
 		this.etage = etage;
 		this.direction = direction;
 		this.destination = destination;
+	}
+	
+	public Usager(int etage) {
+		this.etage = etage;
 	}
 	
 	public Usager()
@@ -74,14 +79,14 @@ public class Usager {
 	
 	// Methode pour entrer dans l'ascenseur
 	public void entrer(Porte porte) {
-		if(porte.isporteOuverte()) {
-			this.setEntre(false);
+		if(porte.isPorteOuverte()) {
+			this.setEntre(true);
 		}
 	}
 	
 	// Methode pour sortir de l'ascenseur
 	public void sortir(Porte porte) {
-		if(porte.isporteOuverte()) {
+		if(porte.isPorteOuverte()) {
 			this.setEntre(false);
 		}
 	}

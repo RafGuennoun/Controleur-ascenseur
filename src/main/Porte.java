@@ -1,3 +1,4 @@
+package main;
 import java.util.concurrent.TimeUnit;
 
 public class Porte {
@@ -22,20 +23,20 @@ public class Porte {
 	
 		// Getters and Setters :
 	
-	public int getetage() {
+	public int getEtage() {
 		return etage;
 	}
 
-	public void setetage(int etage) {
+	public void setEtage(int etage) {
 		this.etage = etage;
 	}
 
 	
-	public boolean isporteOuverte() {
+	public boolean isPorteOuverte() {
 		return porteOuverte;
 	}
 	
-	public void setporteOuverte(boolean porteOuverte) {
+	public void setPorteOuverte(boolean porteOuverte) {
 		this.porteOuverte = porteOuverte;
 	}
 
@@ -59,17 +60,17 @@ public class Porte {
 	// Methode qui ouvre la porte : 
 	public void ouvrir() {
 		
-		if(!this.isporteOuverte())
+		if(!this.isPorteOuverte())
 		{
 			// Ouvrir la porte
-			this.setporteOuverte(true);
+			this.setPorteOuverte(true);
 		}
 	}
 	
 	public void fermer() {
-		if(this.isporteOuverte()) {
+		if(this.isPorteOuverte()) {
 			//fermer la porte
-			this.setporteOuverte(false);
+			this.setPorteOuverte(false);
 		}
 	}
 	
