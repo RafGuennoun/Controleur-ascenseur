@@ -78,7 +78,6 @@ public class Porte {
 	// Methode qui signale a l'ascenseur la possibilite de demarrer
 	public void signalerDepart (Ascenseur asc)
 	{
-		asc.setDemarrer(true);
 	}
 	
 	

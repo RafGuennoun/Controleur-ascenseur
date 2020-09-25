@@ -59,8 +59,23 @@ public class Main {
 		System.out.println("porte ouverte : "+p.isPorteOuverte());
 		*/
 		
-		int i=1;
-		rec(i);
+		//int i=1;
+		//rec(i);
+		
+		ArrayList<Integer> liste = new ArrayList<Integer>();
+		for(int i=0;i<=10;i++)
+		{
+			if(i==3 || i==6)
+				liste.add(0);
+			else
+				liste.add(i);
+		}
+		
+		for(int i=0;i<=10;i++)
+		{
+			System.out.println(liste.get(0)+" size: "+liste.size());
+			liste.remove(0);
+		}
 		
 		
 		 
