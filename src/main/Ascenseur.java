@@ -27,11 +27,11 @@ public class Ascenseur {
 	{
 		this.etageCourant = 1;
 		this.etageMax = etageMax;
+		this.arret = true;
 		
 		this.appels = new ArrayList<Integer>();
 		this.destinations = new ArrayList<Integer>();
 		
-		this.signalerArret();
 		
 	}
 
@@ -116,7 +116,10 @@ public class Ascenseur {
 		return arret;
 	}
 	
-
+	
+	public void setArret(boolean arret) {
+		this.arret = arret;
+	}
 	
 	
 		// **** Méthodes ****
@@ -151,11 +154,15 @@ public class Ascenseur {
 	// Methode qui ajoute un appel a la liste des appels
 	public void appeller(int appel)
 	{
-		this.appels.add(appel);
+		if( (appel >= 1) && (appel <= this.etageMax) )
+		{
+			this.appels.add(appel);
+		}
+		
 		
 	}
 	
-	// methode changer direction sinon position de l'appel
+	// methode changer direction selon la position de l'appel
 	public void prendreDirection(int appel)
 	{
 		if(this.etageCourant < appel)
@@ -167,13 +174,19 @@ public class Ascenseur {
 	// Méthode qui déplace l'ascenseur d'un etage
 	public void deplacer()
 	{
-		if(!isArret())
+		if(!this.isArret())
 		{
-			if(this.direction.equals("Down") && this.isEtageMin())
+			if(this.direction.equals("Down") && !this.isEtageMin())
+			{
 				this.etageCourant -= 1;
-			
-			if(this.direction.equals("Up") && this.isEtageMax())
+			}
+				
+				
+			if(this.direction.equals("Up") && !this.isEtageMax())
+			{
 				this.etageCourant += 1;
+			}
+				
 		}
 	}
 	
@@ -183,17 +196,24 @@ public class Ascenseur {
 		this.arret = true;
 	}
 	
-	
 	// Méthode qui efface le dernier appel 
 	public void effacerAppel()
 	{
-		this.appels.remove(0);
+		if(this.appels.size() != 0)
+		{
+			this.appels.remove(0);
+		}
+		
 	}
 	
 	// Méthode qui efface la derinère destination
 	public void effacerDestination()
 	{
-		this.destinations.remove(0);
+		if(this.destinations.size() != 0)
+		{
+			this.destinations.remove(0);
+		}
+		
 	}
 	
 	// Methode pour renverser la direction si l’ascenseur atteint l’étage le plus haut (resp. le plus bas)
@@ -212,7 +232,6 @@ public class Ascenseur {
 		}
 	}
 	
-
 	// Methode pour recuperer les usager
 	public boolean allerVersAppel()
 	{

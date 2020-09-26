@@ -62,6 +62,7 @@ public class Main {
 		//int i=1;
 		//rec(i);
 		
+		/*
 		ArrayList<Integer> liste = new ArrayList<Integer>();
 		for(int i=0;i<=10;i++)
 		{
@@ -76,9 +77,18 @@ public class Main {
 			System.out.println(liste.get(0)+" size: "+liste.size());
 			liste.remove(0);
 		}
+		*/
+		
+		Ascenseur asc = new Ascenseur(10);
+		
+		asc.setEtageCourant(5);
+		
+		asc.appeller(12);
+		asc.allerVersAppel();
+		System.out.println("etage courant : "+asc.getEtageCourant());
 		
 		
-		 
+	
 	}
 
 }
