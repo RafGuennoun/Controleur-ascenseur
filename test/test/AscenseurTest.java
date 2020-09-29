@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 import main.Ascenseur;
+import main.Usager;
 
 class AscenseurTest {
 
@@ -17,8 +18,10 @@ class AscenseurTest {
 		Ascenseur ascenseur = new Ascenseur(10);
 		assertTrue(ascenseur.isArret());
 		
+		Usager u = new Usager(5,"Up");
+		
 		// Ajouter un appel 
-		ascenseur.appeller(5);
+		ascenseur.appeller(u);
 		ascenseur.demarrer();
 		assertFalse(ascenseur.isArret());
 		
@@ -66,15 +69,18 @@ class AscenseurTest {
 		// La liste des appels est vide
 		assertTrue(ascenseur.getAppels().isEmpty());
 		
+		Usager u = new Usager(5,"Up");
+		
 		// appel d'un etage existant
-		ascenseur.appeller(5);
+		ascenseur.appeller(u);
 		assertFalse(ascenseur.getAppels().isEmpty());
 		assertEquals(1, ascenseur.getAppels().size());
 		ascenseur.getAppels().remove(0);
 		assertTrue(ascenseur.getAppels().isEmpty());
 		
+		Usager u2 = new Usager(12,"Down");
 		// appel d'un etage existant
-		ascenseur.appeller(12);
+		ascenseur.appeller(u2);
 		assertTrue(ascenseur.getAppels().isEmpty());
 		
 		
@@ -127,10 +133,11 @@ class AscenseurTest {
 		assertTrue(ascenseur.isArret());
 		
 		// L'ascenseur resoit un appel du 5eme etage
-		ascenseur.appeller(5);
+		Usager u = new Usager(5,"Up");
+		ascenseur.appeller(u);
 		
 		// L'ascenseur prend la direction de l'appel
-		ascenseur.prendreDirection(5);
+		ascenseur.prendreDirection(u.getEtage());
 		
 		// Demarrage de l'ascenseur
 		ascenseur.demarrer();
@@ -162,10 +169,11 @@ class AscenseurTest {
 		assertEquals(9, ascenseur.getEtageCourant());
 						
 		// L'ascenseur resoit un appel du 5eme etage
-		ascenseur.appeller(5);
+		Usager u2 = new Usager(5,"Down");
+		ascenseur.appeller(u2);
 				
 		// L'ascenseur prend la direction de l'appel
-		ascenseur.prendreDirection(5);
+		ascenseur.prendreDirection(u2.getEtage());
 				
 		// Demarrage de l'ascenseur
 		ascenseur.demarrer();
@@ -215,12 +223,14 @@ class AscenseurTest {
 		
 		assertEquals(0, ascenseur.getAppels().size());
 		
-		// Ajouter un premier appel de 3 
-		ascenseur.appeller(3);
+		// Ajouter un premier appel de 3
+		Usager u = new Usager(3,"Up");
+		ascenseur.appeller(u);
 		assertEquals(1, ascenseur.getAppels().size());
 		
 		// Ajouter un deuxieme appel de 5
-		ascenseur.appeller(5);
+		Usager u2 = new Usager(5,"Up");
+		ascenseur.appeller(u2);
 		assertEquals(2, ascenseur.getAppels().size());
 		
 		// Effacer un appel
@@ -338,15 +348,18 @@ class AscenseurTest {
 		assertEquals(0, ascenseur.getAppels().size());
 		
 		// L'ascenseur recoit un premier appel de l'etage 5
-		ascenseur.appeller(5);
+		Usager u1 = new Usager(5,"Up");
+		ascenseur.appeller(u1);
 		assertEquals(1, ascenseur.getAppels().size());
 		
 		// L'ascenseur recoit un deuxieme appel de l'etage 8
-		ascenseur.appeller(8);
+		Usager u2 = new Usager(8,"Down");
+		ascenseur.appeller(u2);
 		assertEquals(2, ascenseur.getAppels().size());
 		
 		// L'ascenseur recoit un troisieme appel de l'etage 2
-		ascenseur.appeller(2);
+		Usager u3 = new Usager(2,"Up");
+		ascenseur.appeller(u3);
 		assertEquals(3, ascenseur.getAppels().size());
 				
 		// utiliser la methode allerVersAppel

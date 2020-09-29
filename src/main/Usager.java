@@ -23,8 +23,9 @@ public class Usager {
 		this.destination = destination;
 	}
 	
-	public Usager(int etage) {
+	public Usager(int etage, String direction) {
 		this.etage = etage;
+		this.direction = direction;
 	}
 	
 	public Usager()

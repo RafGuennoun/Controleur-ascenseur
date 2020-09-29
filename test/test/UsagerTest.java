@@ -16,14 +16,14 @@ public class UsagerTest {
 		//tester d'abord avec une porte ouverte
 		porte.ouvrir();
 		
-		Usager usager = new Usager(1);
+		Usager usager = new Usager(1, "Up");
 		usager.entrer(porte);
 		
 		//l'attribut entre doit etre à true
 		assertTrue(usager.isEntre());
 		
 		//tester avec une porte fermé
-		Usager usager2 = new Usager(1);
+		Usager usager2 = new Usager(1, "Up");
 		porte.fermer();
 		
 		usager2.entrer(porte);
@@ -40,7 +40,7 @@ public class UsagerTest {
 		//tester d'abord avec une porte ouverte
 		porte.ouvrir();
 		
-		Usager usager = new Usager(1);
+		Usager usager = new Usager(1, "Up");
 		usager.setEntre(true); //pour tester si la methode modifie
 		
 		usager.sortir(porte);
@@ -49,7 +49,7 @@ public class UsagerTest {
 		assertFalse(usager.isEntre());
 		
 		//tester avec une porte fermé
-		Usager usager2 = new Usager(1);
+		Usager usager2 = new Usager(1, "Up");
 		usager2.setEntre(true);//pour tester 
 		porte.fermer();
 		

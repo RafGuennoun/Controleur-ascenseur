@@ -14,12 +14,10 @@ public class Porte {
 	public Porte(int etage) 
 	{
 		this.etage = etage;
+		this.porteOuverte = false;
 	}
 	
-	public Porte() 
-	{
-		
-	}
+	
 	
 		// Getters and Setters :
 	

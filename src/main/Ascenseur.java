@@ -16,7 +16,7 @@ public class Ascenseur {
 	private ArrayList<Integer> destinations = new ArrayList<Integer>(); //FIFO
 	
 	// appels: un vecteur des appels effectués par les usagers
-	private ArrayList<Integer> appels = new ArrayList<Integer>(); //FIFO
+	private ArrayList<Usager> appels = new ArrayList<Usager>(); //FIFO
 	
 	// indique si l'ascenseur est en arret ou en déplacement 
 	private boolean arret;
@@ -29,7 +29,7 @@ public class Ascenseur {
 		this.etageMax = etageMax;
 		this.arret = true;
 		
-		this.appels = new ArrayList<Integer>();
+		this.appels = new ArrayList<Usager>();
 		this.destinations = new ArrayList<Integer>();
 		
 		
@@ -102,12 +102,12 @@ public class Ascenseur {
 	}
 
 
-	public ArrayList<Integer> getAppels() {
+	public ArrayList<Usager> getAppels() {
 		return appels;
 	}
 
 
-	public void setAppels(ArrayList<Integer> appels) {
+	public void setAppels(ArrayList<Usager> appels) {
 		this.appels = appels;
 	}
 
@@ -152,11 +152,11 @@ public class Ascenseur {
 	}
 	
 	// Methode qui ajoute un appel a la liste des appels
-	public void appeller(int appel)
+	public void appeller(Usager usager)
 	{
-		if( (appel >= 1) && (appel <= this.etageMax) )
+		if( (usager.getEtage() >= 1) && (usager.getEtage() <= this.etageMax) )
 		{
-			this.appels.add(appel);
+			this.appels.add(usager);
 		}
 		
 		
@@ -235,16 +235,16 @@ public class Ascenseur {
 	// Methode pour recuperer les usager
 	public boolean allerVersAppel()
 	{
-		if((this.appels.get(0) >= 1)&&(this.appels.get(0) <= this.etageMax))
+		if((this.appels.get(0).getEtage() >= 1)&&(this.appels.get(0).getEtage() <= this.etageMax))
 		{
 			//demarrer l'ascneseur
 			this.demarrer();
 			
 			//mettre a jour la direction vers la direction de l'appel
-			this.prendreDirection(this.appels.get(0));
+			this.prendreDirection(this.appels.get(0).getEtage());
 			
 			//deplacer d'un etage jusqu'à arriver à l'usager
-			while(!arriverADestination(this.appels.get(0)))
+			while(!arriverADestination(this.appels.get(0).getEtage()))
 			{
 				this.deplacer();
 			}
